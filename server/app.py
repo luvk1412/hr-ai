@@ -7,11 +7,16 @@ CORS(app, resources={r"/hrquery": {"origins": "*"}})
 
 
 @app.route('/hrquery', methods=['POST'])
-def home():
+def get_hr_query():
     data = request.get_json()
     query = data.get('query', '')
     result = get_hr_query_ans(query)
     return jsonify({'result': result})
+
+
+@app.route('/status')
+def status():
+    return {"status": "ok"}
 
 
 if __name__ == "__main__":
