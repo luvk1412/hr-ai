@@ -32,8 +32,8 @@ const App = () => {
 
   const submitQuery = async (event) => {
     event.preventDefault();
-    const response = await axios.post('http://localhost:4000', { query: input });
-    setOutput(response.data);
+    const response = await axios.post('http://localhost:8080/hrquery', { query: input });
+    setOutput(response.data.result);
   };
 
   return (
