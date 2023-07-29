@@ -131,3 +131,6 @@ data/
 .DS_Store
 *.swp
 *~
+
+
+trainingdocs/*
