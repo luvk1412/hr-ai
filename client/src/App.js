@@ -22,14 +22,6 @@ const App = () => {
     [darkMode],
   );
 
-  // const submitQuery = async (event) => {
-  //   event.preventDefault();
-  //   const response = await axios.post('http://localhost:<your_port>', { query: input });
-  //   setOutput(response.data);
-  // };
-
-
-
   const submitQuery = async (event) => {
     event.preventDefault();
     const response = await axios.post('http://localhost:8080/hrquery', { query: input });
