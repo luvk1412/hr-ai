@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import { CssBaseline, Container, TextField, Button, Typography, Box, useMediaQuery, Grid, Paper, IconButton, Input } from '@mui/material';
+import { CssBaseline, Container, TextField, Button, Typography, Box, useMediaQuery, Grid, Paper, IconButton, Input, CircularProgress } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -10,6 +10,7 @@ const App = () => {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('');
   const [darkMode, setDarkMode] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const theme = React.useMemo(
@@ -24,8 +25,15 @@ const App = () => {
 
   const submitQuery = async (event) => {
     event.preventDefault();
-    const response = await axios.post('http://localhost:8080/hrquery', { query: input });
-    setOutput(response.data.result);
+    setIsLoading(true);
+    try {
+      const response = await axios.post('http://localhost:8080/hrquery', { query: input });
+      setOutput(response.data.result);
+    } catch (error) {
+      console.error(error);
+      setOutput('Error gettin response, please retry')
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -58,15 +66,15 @@ const App = () => {
                 />
               </Grid>
               <Grid item xs={2}>
-                <Button variant="contained" type="submit" fullWidth>
-                  Submit
+                <Button variant="contained" type="submit" fullWidth disabled={isLoading}>
+                  {isLoading ? 'Loading...' : 'Submit'}
                 </Button>
               </Grid>
             </Grid>
           </form>
           {/* </Container> */}
           <Box my={4}>
-            {output && <Paper elevation={3} style={{ padding: '1em' }}>
+            {isLoading ? <CircularProgress /> : output && <Paper elevation={3} style={{ padding: '1em' }}>
               <ReactMarkdown>{output}</ReactMarkdown>
             </Paper>
             }
