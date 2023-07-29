@@ -43,24 +43,27 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <Box sx={{ height: '100vh', p: 2, display: 'flex', flexDirection: 'column' }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} marginTop={2}>
-            <Typography variant="h3" component="div" marginTop={3}>
-              Titan AI HR
-            </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} marginTop={5}>
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              {darkMode ? <img src="https://resources.flockmail.com/titanemail_logo_dark.svg" alt="Titan Logo" /> : "Sorry we dont have light logo :("}
+              <Typography variant="h6" component="div" marginLeft={1}>
+                Ai HR
+              </Typography>
+            </div>
             <IconButton onClick={() => setDarkMode(!darkMode)}>
               {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
           </Box>
           {/* <Container> */}
           <form onSubmit={submitQuery} noValidate autoComplete="off">
-            <Grid container spacing={2} marginTop={2}>
+            <Grid container spacing={2} marginTop={4}>
               <Grid item xs={8}>
                 <Input
                   fullWidth
                   id="outlined-basic"
                   label="Enter your query"
                   variant="outlined"
-                  placeholder="Ask you question"
+                  placeholder="Ask your HR related question"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                 />
