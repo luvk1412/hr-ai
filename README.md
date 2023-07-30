@@ -43,18 +43,7 @@ Production run should be done using gunicorn or uWSGI to support multi threaded 
 gunicorn -b 0.0.0.0:8080 app:app
 ```
 
-## Docker
+## Docker Run
 
-You can run both client and server using the docker provided docker file in a single container which will serve the UI on port 8080, server will not be server from docker.
-
-Before building docker image
-- Create a .env file inside server directory having OPENAI_API_KEY, check .env.sample for example
-- Trained chroma db data should be present in server/db. This folder is automatically created once you run training.py as mention in above server section.
-
-Docker build and Run
-
-```
-docker build -t titan_ai_hr .
-docker run -p 8080:8080 titan_ai_hr
-```
+You can run both client and server using the docker files provided seperately or you can run both together using the provided docker-compose
 
