@@ -27,7 +27,7 @@ const App = () => {
     event.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post('http://localhost:8080/hrquery', { query: input });
+      const response = await axios.post('localhost:82/hrquery', { query: input });
       setOutput(response.data.result);
     } catch (error) {
       console.error(error);
