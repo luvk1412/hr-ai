@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import { CssBaseline, Container, TextField, Button, Typography, Box, useMediaQuery, Grid, Paper, IconButton, Input, CircularProgress, Divider, Tooltip } from '@mui/material';
+import { CssBaseline, Container, Button, Typography, Box, Grid, Paper, IconButton, Input, CircularProgress, Divider, Tooltip } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
@@ -14,7 +14,6 @@ const App = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const theme = React.useMemo(
     () =>
       createTheme({
