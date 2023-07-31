@@ -1,7 +1,7 @@
 # titan-hr-ai
 An Ai assistant which would answer hr related queries for company employees, This can be ideally used for any kind of question answering provided we have the content files on which qna needs to be done. Those dile can be placed inside server/trainingdocs directory
 
-> *_Wish to contribute ? Check [Things to contribute](#Things-which-can-be-Improved)_*
+> *_Wish to contribute ? Check [Things to contribute](#things-which-can-be-improved)_*
 
 ## Client
  
