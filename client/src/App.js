@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import ReactMarkdown from 'react-markdown';
-import { CssBaseline, Container, TextField, Button, Typography, Box, useMediaQuery, Grid, Paper, IconButton, Input, CircularProgress } from '@mui/material';
+import { CssBaseline, Container, TextField, Button, Typography, Box, useMediaQuery, Grid, Paper, IconButton, Input, CircularProgress, Divider, Tooltip } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import GitHubIcon from '@mui/icons-material/GitHub';
+
 
 const App = () => {
   const [input, setInput] = useState('');
@@ -45,7 +47,7 @@ const App = () => {
         <Box sx={{ height: '100vh', p: 2, display: 'flex', flexDirection: 'column' }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} marginTop={5}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              {darkMode ? <img src="https://resources.flockmail.com/titanemail_logo_dark.svg" alt="Titan Logo" /> : "Sorry we dont have light logo :("}
+              <img src={darkMode ? "https://resources.flockmail.com/titanemail_logo_dark.svg" : "https://resources.flockmail.com/titanemail_logo.svg"} alt="Titan Logo" style={{ width: '120px' }} />
               <Typography variant="h6" component="div" marginLeft={1}>
                 Ai HR
               </Typography>
@@ -81,6 +83,18 @@ const App = () => {
               <ReactMarkdown>{output}</ReactMarkdown>
             </Paper>
             }
+          </Box>
+          {/* Footer */}
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: 'auto' }}>
+            <Typography variant="body2" color="text.secondary">
+              Made with <span style={{ color: 'red' }}>&#x2764;&#xFE0F;</span> for Titan
+            </Typography>
+            <Divider orientation="vertical" flexItem style={{ height: '20px', margin: '10px 10px' }} />
+            <Tooltip title="Contribute" arrow>
+              <IconButton href="https://github.com/luvk1412/hr-ai" target="_blank" color="inherit">
+                <GitHubIcon />
+              </IconButton>
+            </Tooltip>
           </Box>
         </Box>
       </ThemeProvider>
