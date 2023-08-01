@@ -28,7 +28,7 @@ const App = () => {
     event.preventDefault();
     setIsLoading(true);
     try {
-      const response = await axios.post('localhost:82/hrquery', { query: input });
+      const response = await axios.post('http://ci.aws.talk.to:82/hrquery', { query: input });
       setOutput(response.data.result);
     } catch (error) {
       console.error(error);
@@ -46,7 +46,7 @@ const App = () => {
         <Box sx={{ height: '100vh', p: 2, display: 'flex', flexDirection: 'column' }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} marginTop={5}>
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <img src={darkMode ? "https://resources.flockmail.com/titanemail_logo_dark.svg" : "https://resources.flockmail.com/titanemail_logo.svg"} alt="Titan Logo" style={{ width: '120px' }} />
+              <img src={darkMode ? "https://resources.flockmail.com/titanemail_logo_dark.svg" : "https://resources.flockmail.com/titanemail_logo.svg"} alt="Titan Logo" style={{ width: (darkMode ? '120px' : '98px') }} />
               <Typography variant="h6" component="div" marginLeft={1}>
                 Ai HR
               </Typography>
